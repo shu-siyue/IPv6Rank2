@@ -25,7 +25,8 @@
       </div>
       <div class="content">
         <div v-if="this.input_type === ''">
-          <country-map :input="search" v-show="isSelected === 0" />
+          <overview v-show="isSelected === 0" />
+          <as-resource v-show="isSelected === 4" />
         </div>
         <div v-else-if="this.input_type === 'ipv6'">
           <map-dot :input="search" v-show="isSelected === 0" />
@@ -52,7 +53,8 @@
 
 <script>
   import HeadNav from "@/components/HeadNav";
-  import CountryMap from "@/components/SearchbyNone/CountryMap";
+  import Overview from "@/components/SearchbyNone/Overview";
+  import AsResource from "@/components/SearchbyNone/AsResource";
   import MapDot from "@/components/SearchbyAddress/MapDot";
   import TopoV6 from "@/components/SearchbyAddress/TopoV6";
   import PathGraph from "@/components/SearchbyAddress/PathGraph";
@@ -67,7 +69,8 @@
     inject:['reload'],
     components:{
       HeadNav,
-      CountryMap,
+      Overview,
+      AsResource,
       MapDot,
       TopoV6,
       PathGraph,
@@ -80,7 +83,7 @@
     data() {
       return {
         search: '', // input输入框
-        selected: ['国家分布', '地址分配', '路由排行'],
+        selected: ['基本概述', '地址分配', '路由宣告', "路由注册", "AS资源", "网站资源", "活跃地址", "基础设施"],
         isSelected:0, // 默认选中第一个
         input_type: '',
         isclick: false,
@@ -92,7 +95,7 @@
       // 只要输入框的内容变化，回到默认页面。
       // 这样不太好，点击按钮才能
       search() {
-        this.selected = ['国家分布', '地址分配', '路由排行']
+        this.selected = ['基本概述', '地址分配', '路由宣告', "路由注册", "AS资源", "网站资源", "活跃地址", "基础设施"],
         this.input_type = ''
         this.isSelected = 0
       }

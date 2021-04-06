@@ -8,9 +8,8 @@
         v-for="item in this.whois"
         :key="item.index"
       >
-        <div v-if="item.includes('%')">
+        <div v-if="item.includes('%')" class="space">
           {{ item }}
-          <br>
         </div>
         <div v-else>{{ item }}</div>
       </div>
@@ -58,13 +57,13 @@ export default {
 
 <style lang="scss" scoped>
 .whois {
-  width: 855px;
+  width: 840px;
   height: 380px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   //font-size: 18.5px;
-  padding-left: 25px;
+  padding-left: 40px;
   padding-bottom: 10px;
   .el-scrollbar {
     height: 380px; /*此处一定要设置高度，不然内层的计算属性不生效*/
@@ -76,10 +75,20 @@ export default {
   }
   .whois-title {
     padding-top: 7px;
-    padding-bottom: 7px;
+    padding-bottom: 10px;
     color: #3e3d7a;
     font-weight: bold;
     text-align: center;
+  }
+  .space {
+    margin: 7px auto 7px auto;
+  }
+  // p:nth-of-type(2), 选择每个p元素是其父级的第二个p元素
+  .whois-content:nth-of-type(4){
+    margin: auto auto 7px auto;
+  }
+  .whois-content:last-of-type{
+    margin: 10px auto 10px auto;
   }
 }
 </style>

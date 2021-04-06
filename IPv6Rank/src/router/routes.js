@@ -11,11 +11,6 @@ const routes = [
     component: () => import('@/views/dashboard/home')
   },
   {
-    path: '/homeAfterSearch',
-    name: 'homeAfterSearch',
-    component: () => import('@/views/dashboard/homeAfterSearch')
-  },
-  {
     path: '/website',
     name: 'website',
     component: () => import('@/views/dashboard/website')
